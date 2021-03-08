@@ -1,7 +1,7 @@
-<?php namespace Rainlab\Twitter\Components;
+<?php namespace Winter\Twitter\Components;
 
 use Cms\Classes\ComponentBase;
-use RainLab\Twitter\Classes\TwitterClient;
+use Winter\Twitter\Classes\TwitterClient;
 
 class LatestTweet extends ComponentBase
 {

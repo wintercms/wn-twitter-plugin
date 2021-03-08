@@ -1,9 +1,9 @@
 {
-    "name": "rainlab/twitter-plugin",
-    "type": "october-plugin",
-    "description": "Twitter integration plugin for OctoberCMS",
-    "homepage": "http://octobercms.com",
-    "keywords": ["october", "cms", "rainlab", "twitter"],
+    "name": "winter/twitter-plugin",
+    "type": "winter-plugin",
+    "description": "Twitter integration plugin for Winter CMS",
+    "homepage": "https://wintercms.com",
+    "keywords": ["wintercms", "cms", "twitter"],
     "authors": [
         {
             "name": "Alexey Bobkov",
