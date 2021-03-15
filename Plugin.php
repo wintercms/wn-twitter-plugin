@@ -15,7 +15,8 @@ class Plugin extends PluginBase
             'name'        => 'Twitter',
             'description' => 'Provides integration with Twitter.',
             'author'      => 'Alexey Bobkov, Samuel Georges',
-            'icon'        => 'icon-twitter'
+            'icon'        => 'icon-twitter',
+            'replaces'    => 'RainLab.Twitter'
         ];
     }
 
