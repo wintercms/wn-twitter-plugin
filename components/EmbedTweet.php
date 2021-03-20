@@ -1,4 +1,4 @@
-<?php namespace RainLab\Twitter\Components;
+<?php namespace Winter\Twitter\Components;
 
 use Cms\Classes\ComponentBase;
 use Http;

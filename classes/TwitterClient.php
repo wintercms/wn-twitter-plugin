@@ -1,13 +1,13 @@
-<?php namespace RainLab\Twitter\Classes;
+<?php namespace Winter\Twitter\Classes;
 
 use Cache;
 use tmhOAuth;
-use RainLab\Twitter\Models\Settings;
+use Winter\Twitter\Models\Settings;
 use ApplicationException;
 
 class TwitterClient
 {
-    use \October\Rain\Support\Traits\Singleton;
+    use \Winter\Storm\Support\Traits\Singleton;
 
     /**
      * @var tmhOAuth Twitter API client
@@ -35,7 +35,7 @@ class TwitterClient
      */
     public function getUserData()
     {
-        $cacheKey = 'rainlab-twitter-user-data';
+        $cacheKey = 'winter-twitter-user-data';
         $cached = Cache::get($cacheKey, false);
         if ($cached && ($unserialized = @unserialize($cached)) !== false)
             return $unserialized;
@@ -60,7 +60,7 @@ class TwitterClient
 
     public function getLatestTweet($params)
     {
-        $cacheKey = 'rainlab-twitter-latest';
+        $cacheKey = 'winter-twitter-latest';
         $cached = Cache::get($cacheKey, false);
 
         if ($cached && ($unserialized = @unserialize($cached)) !== false)
@@ -106,7 +106,7 @@ class TwitterClient
      */
     public function listFavorites()
     {
-        $cacheKey = 'rainlab-twitter-favorites';
+        $cacheKey = 'winter-twitter-favorites';
         $cached = Cache::get($cacheKey, false);
         if ($cached && ($unserialized = @unserialize($cached)) !== false)
             return $unserialized;

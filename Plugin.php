@@ -1,4 +1,4 @@
-<?php namespace RainLab\Twitter;
+<?php namespace Winter\Twitter;
 
 /**
  * The plugin.php file (called the plugin initialization script) defines the plugin information class.
@@ -15,19 +15,20 @@ class Plugin extends PluginBase
             'name'        => 'Twitter',
             'description' => 'Provides integration with Twitter.',
             'author'      => 'Alexey Bobkov, Samuel Georges',
-            'icon'        => 'icon-twitter'
+            'icon'        => 'icon-twitter',
+            'replaces'    => 'RainLab.Twitter'
         ];
     }
 
     public function registerComponents()
     {
         return [
-            'RainLab\Twitter\Components\Favorites'        => 'twitterFavorites',
-            'RainLab\Twitter\Components\FollowButton'     => 'followButton',
-            'RainLab\Twitter\Components\TweetButton'      => 'tweetButton',
-            'RainLab\Twitter\Components\EmbedTweet'       => 'embedTweet',
-            'RainLab\Twitter\Components\EmbedTimeline'    => 'embedTimeline',
-            'RainLab\Twitter\Components\LatestTweet'      => 'latestTweet'
+            'Winter\Twitter\Components\Favorites'        => 'twitterFavorites',
+            'Winter\Twitter\Components\FollowButton'     => 'followButton',
+            'Winter\Twitter\Components\TweetButton'      => 'tweetButton',
+            'Winter\Twitter\Components\EmbedTweet'       => 'embedTweet',
+            'Winter\Twitter\Components\EmbedTimeline'    => 'embedTimeline',
+            'Winter\Twitter\Components\LatestTweet'      => 'latestTweet'
         ];
     }
 
@@ -38,7 +39,7 @@ class Plugin extends PluginBase
                 'label'       => 'Twitter',
                 'icon'        => 'icon-twitter',
                 'description' => 'Configure Twitter authentication parameters.',
-                'class'       => 'RainLab\Twitter\Models\Settings',
+                'class'       => 'Winter\Twitter\Models\Settings',
                 'order'       => 600
             ]
         ];

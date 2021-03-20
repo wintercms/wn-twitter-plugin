@@ -1,8 +1,8 @@
-<?php namespace RainLab\Twitter\Components;
+<?php namespace Winter\Twitter\Components;
 
 use Cache;
 use Cms\Classes\ComponentBase;
-use RainLab\Twitter\Classes\TwitterClient;
+use Winter\Twitter\Classes\TwitterClient;
 use ApplicationException;
 use Exception;
 
