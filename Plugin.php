@@ -14,7 +14,7 @@ class Plugin extends PluginBase
         return [
             'name'        => 'Twitter',
             'description' => 'Provides integration with Twitter.',
-            'author'      => 'Alexey Bobkov, Samuel Georges',
+            'author'      => 'Winter CMS',
             'icon'        => 'icon-twitter',
             'replaces'    => 'RainLab.Twitter'
         ];
