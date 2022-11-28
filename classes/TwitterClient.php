@@ -18,7 +18,9 @@ class TwitterClient
     {
         $settings = Settings::instance();
         if (!strlen($settings->api_key))
+        {
             throw new ApplicationException('Twitter API access is not configured. Please configure it on the System / Settings / Twitter page.');
+        }
 
         $this->client = new tmhOAuth([
             'consumer_key'        => $settings->api_key,
@@ -38,15 +40,18 @@ class TwitterClient
         $cacheKey = 'winter-twitter-user-data';
         $cached = Cache::get($cacheKey, false);
         if ($cached && ($unserialized = @unserialize($cached)) !== false)
+        {
             return $unserialized;
+        }
 
         $code = $this->client->user_request([
             'url' => $this->client->url('1.1/account/verify_credentials')
         ]);
 
         if ($code <> 200) {
-            if ($code == 429)
+            if ($code == 429) {
                 throw new ApplicationException('Exceeded Twitter API rate limit');
+            }
 
             throw new ApplicationException('Error requesting Twitter API: '.$this->client->response['error']);
         }
@@ -77,8 +82,8 @@ class TwitterClient
             'params' => array(
                 'count'            => $params["tweet-limit"],
                 'screen_name'      => $userData['screen_name'],
-                'exclude_replies'  => (!isset($params["exclude-replies"]) &&
-                                        $params["exclude-replies"] == 'No' ? false : true) 
+                'exclude_replies'  => (!isset($params["exclude-replies"]) && $params["exclude-replies"] == 'No' ? false : true),
+                'cache-duration'   => (!isset($params["cache-duration"]) ? 10 : $params["cache-duration"])
             )
         ));
 
@@ -86,9 +91,9 @@ class TwitterClient
         {
              throw new ApplicationException('Error requesting Twitter API: '.$obj->client->response['error']);
         }
-           
+
         $result = json_decode($obj->client->response['response'], true);
-        foreach ($result as &$message) 
+        foreach ($result as &$message)
         {
             $text = $message['text'];
             $text = preg_replace('/\@\w+/', '<span class="name">$0</span>', $text);
@@ -96,7 +101,7 @@ class TwitterClient
             $message['text_processed'] = $obj->urlsToLinks($text);
         }
 
-        Cache::put($cacheKey, serialize($result), 2);
+        Cache::put($cacheKey, serialize($result), $params["cache-duration"]);
         return $result;
     }
 
@@ -109,7 +114,9 @@ class TwitterClient
         $cacheKey = 'winter-twitter-favorites';
         $cached = Cache::get($cacheKey, false);
         if ($cached && ($unserialized = @unserialize($cached)) !== false)
+        {
             return $unserialized;
+        }
 
         $obj = static::instance();
 
@@ -125,7 +132,9 @@ class TwitterClient
         ));
 
         if ($code <> 200)
+        {
             throw new ApplicationException('Error requesting Twitter API: '.$obj->client->response['error']);
+        }
 
         $result = json_decode($obj->client->response['response'], true);
         foreach ($result as &$message) {
