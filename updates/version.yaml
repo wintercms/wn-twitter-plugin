@@ -6,3 +6,4 @@
 "2.0.0":
     - Rebreand to Winter.Twitter
     - v2.0.0/convert_data.php
+"2.0.1": Added cache duration schedule for latest tweets (default 10 mins).
