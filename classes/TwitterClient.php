@@ -101,7 +101,7 @@ class TwitterClient
             $message['text_processed'] = $obj->urlsToLinks($text);
         }
 
-        Cache::put($cacheKey, serialize($result), $params["cache-duration"]);
+        Cache::put($cacheKey, serialize($result), now()->addMinutes($params["cache-duration"]));
         return $result;
     }
 
